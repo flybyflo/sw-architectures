@@ -5,25 +5,23 @@ The goal is to collect architecture information from AOSA source material,
 transform it into reviewed wiki pages, and use those pages to answer general,
 project-specific, and comparative architecture questions.
 
-The project follows a three-layer design:
+The project follows a three-layer LLM Wiki design:
 
 1. Raw sources are kept in `raw_sources/`.
 2. Reviewed wiki pages are kept in `wiki/`.
-3. Search, chatbot, and evaluation scripts are kept in `scripts/` and
-   `evaluation/`.
+3. Agent/query workflow, qmd retrieval, and evaluation documentation are added
+   in later issues under `docs/`, `evaluation/`, and supporting config files.
 
 ## Current Scope
 
 Issue 1 sets up the repository structure and working rules.
-Issue 2 collects the first AOSA source notes.
+Issue 2 collects raw source-layer notes from AOSA and selected optional sources.
 
-The first AOSA projects are:
+The source layer currently targets:
 
-- nginx
-- Git
-- MediaWiki
-- Hadoop HDFS
-- LLVM
+- all AOSA Volume 1 project chapters
+- all AOSA Volume 2 project chapters
+- selected ByteByteGo architecture and system-design sources
 
 ## Repository Structure
 
@@ -53,17 +51,16 @@ The first AOSA projects are:
 
 ## Setup
 
-This project currently only needs Python 3 for later scripts.
+This project currently has no required runtime dependencies for the source
+notes. Later issues may add qmd setup instructions for searching the Markdown
+wiki.
 
 ```bash
-python3 --version
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+git clone <repo-url>
+cd sw-architectures
 ```
 
-There are no runtime dependencies yet. Future issues will add the search and
-answer scripts.
+There are no runtime dependencies yet.
 
 ## How To Work On Issue 1
 
@@ -76,7 +73,7 @@ Issue 1 is done when:
 
 ## How To Work On Issue 2
 
-For each AOSA project:
+For each AOSA project chapter:
 
 1. Read the AOSA chapter.
 2. Create one file in `raw_sources/aosa/`.
@@ -86,6 +83,7 @@ For each AOSA project:
 
 Each source note should cover:
 
+- Source references
 - Project purpose
 - Architectural style
 - Main components
@@ -94,22 +92,17 @@ Each source note should cover:
 - Quality attributes
 - Key architectural decisions
 - Tradeoffs
+- Useful wiki pages to create later
+
+Optional non-AOSA source notes, such as ByteByteGo articles, belong in
+`raw_sources/extra_sources/`.
 
 ## Contribution Rules
 
-- Work on a branch for each issue, for example `issue-2-aosa-sources`.
+- Work on a branch for each issue.
 - Keep raw source notes in `raw_sources/`.
 - Keep synthesized wiki content in `wiki/`.
 - Do not copy large blocks of source text. Summarize and cite instead.
 - Keep links relative inside the repository.
-- Update `wiki/log.md` when adding or changing wiki content.
+- Update `wiki/log.md` when adding or changing reviewed wiki content.
 - Use pull requests so another team member can review content before merging.
-
-## Planned Commands
-
-These commands will be implemented in later issues:
-
-```bash
-python scripts/search_wiki.py "How does nginx achieve scalability?"
-python scripts/answer_question.py "Compare nginx and Hadoop HDFS in terms of scalability."
-```

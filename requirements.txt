@@ -1,0 +1,2 @@
+# No external Python dependencies are required yet.
+# Later issues may add search or evaluation libraries here.

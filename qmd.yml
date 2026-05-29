@@ -1,0 +1,8 @@
+version: "1"
+collections:
+  - name: architecture-wiki
+    path: ./wiki
+    description: "Reviewed Architecture Wiki pages: projects, ADRs, components, patterns, quality attributes."
+  - name: raw-sources
+    path: ./raw_sources
+    description: "Raw AOSA and optional source notes used only for verification fallback."

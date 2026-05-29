@@ -1,39 +1,95 @@
 # Architecture Wiki Index
 
-This is the entry point for the reviewed Architecture Wiki.
+This is the entry point for the reviewed Architecture Wiki. Read this page
+before retrieval so the workflow can identify reviewed pages before falling back
+to raw source notes.
 
 ## Project Pages
 
-Project pages will be created in `wiki/projects/` after the raw AOSA notes have
-been reviewed.
-
-Planned project pages:
-
-- nginx
-- Git
-- MediaWiki
-- Hadoop HDFS
-- LLVM
+- [nginx](projects/nginx.md): event-driven web server and reverse proxy built
+  around master-supervised non-blocking workers.
+- [Git](projects/git.md): distributed version control system built around a
+  content-addressed object database and explicit staging index.
+- [MediaWiki](projects/mediawiki.md): wiki platform shaped by Wikipedia-scale
+  reads, layered caching, hooks, and wikitext processing.
+- [Hadoop HDFS](projects/hadoop-hdfs.md): distributed filesystem using a
+  NameNode/DataNode split and replicated large blocks.
+- [LLVM](projects/llvm.md): reusable compiler infrastructure centered on LLVM
+  IR, modular passes, and library-based components.
 
 ## Architecture Decision Records
 
-ADRs will be created in `wiki/adrs/` for important architecture decisions.
+- [nginx ADR 001: Event-driven worker model](adrs/nginx-adr-001-event-driven-worker-model.md):
+  choose non-blocking workers over process-per-connection or thread-per-connection
+  request handling.
+- [Git ADR 001: Content-addressed storage](adrs/git-adr-001-content-addressed-storage.md):
+  store immutable repository objects by content hash.
+- [MediaWiki ADR 001: Layered caching](adrs/mediawiki-adr-001-layered-caching.md):
+  use reverse proxy, object, rendered-page, and asset caching to protect the
+  request path.
+- [HDFS ADR 001: NameNode/DataNode separation](adrs/hdfs-adr-001-namenode-datanode-separation.md):
+  centralize namespace metadata while distributing replicated block storage.
+- [LLVM ADR 001: Central intermediate representation](adrs/llvm-adr-001-central-intermediate-representation.md):
+  make LLVM IR the shared boundary between front ends, optimization passes, and
+  backends.
 
-Planned ADR topics:
+## Components
 
-- nginx event-driven worker model
-- Git content-addressed storage
-- MediaWiki layered caching
-- HDFS NameNode/DataNode separation
-- LLVM central IR boundary
+- [Event loop](components/event-loop.md): non-blocking runtime dispatcher used
+  by nginx workers.
+- [Object database](components/object-database.md): immutable content-addressed
+  storage used by Git.
+- [Plugin system](components/plugin-system.md): extension mechanism used by
+  MediaWiki hooks, skins, and extensions.
+- [NameNode](components/namenode.md): HDFS metadata and block-placement
+  coordinator.
+- [Intermediate representation](components/intermediate-representation.md):
+  LLVM IR as a compiler pipeline boundary.
+
+## Patterns
+
+- [Event-driven architecture](patterns/event-driven-architecture.md): systems
+  that multiplex many activities through non-blocking events.
+- [Layered architecture](patterns/layered-architecture.md): separated layers
+  for entry points, processing, storage, caching, and extension points.
+- [Client-server](patterns/client-server.md): clients coordinate with services
+  that own metadata, data, or request processing.
+- [Content-addressed storage](patterns/content-addressed-storage.md): data
+  identity derived from content hashes.
+
+## Quality Attributes
+
+- [Performance](quality-attributes/performance.md): throughput and latency
+  outcomes shaped by event loops, caching, locality, and optimization pipelines.
+- [Reliability](quality-attributes/reliability.md): integrity, replication,
+  retry, durability, and operational recovery mechanisms.
+- [Scalability](quality-attributes/scalability.md): ability to handle larger
+  traffic, data, or collaboration loads.
+- [Modifiability](quality-attributes/modifiability.md): ability to change,
+  extend, or compose the system.
+- [Security](quality-attributes/security.md): isolation, permissions, integrity,
+  and abuse-resistance concerns documented in the source notes.
 
 ## Source Notes
 
-Raw AOSA source notes are in `raw_sources/aosa/`.
+Raw source notes are verification inputs, not the preferred answer layer.
+
+- [nginx source note](../raw_sources/aosa/nginx.md)
+- [Git source note](../raw_sources/aosa/git.md)
+- [MediaWiki source note](../raw_sources/aosa/mediawiki.md)
+- [Hadoop HDFS source note](../raw_sources/aosa/hadoop-hdfs.md)
+- [LLVM source note](../raw_sources/aosa/llvm.md)
+
+## Retrieval Order
+
+1. Start with this index.
+2. Read the most relevant reviewed wiki pages.
+3. Use `qmd` retrieval when the index does not identify the right page.
+4. Fall back to `raw_sources/` only to verify or fill missing context.
+5. Cite exact Markdown file paths in answers.
 
 ## Next Steps
 
-- Convert source notes into reviewed project pages.
-- Add ADRs for major decisions.
-- Add shared component, pattern, and quality attribute pages.
 - Add search and answer scripts.
+- Add more reviewed project, ADR, component, pattern, and quality pages from the
+  remaining AOSA source notes.

@@ -31,12 +31,14 @@ Architecture Wiki.
   important.
 - Pattern pages should list projects where the pattern appears.
 
-## Answer Rules
+## Agent Answer Workflow Rules
+1. **Read `wiki/index.md` first** as the primary navigation source to locate relevant architecture documentation.
+2. **Use `qmd` retrieval** (from Issue #6 configuration) when deeper context, semantic matching, or multi-file search is required.
+3. **Prefer reviewed wiki pages** over raw sources. Use `raw_sources/` notes only for verification fallback.
+4. **Cite exact file paths** for all claims made in the output.
+5. **Do not invent missing information.** If the context is insufficient, explicitly declare it.
 
-- Answers should be based on reviewed wiki pages when possible.
-- If a wiki page is missing or unclear, check the raw source note.
-- Every answer should list the wiki or source files used.
-- Say when the wiki does not contain enough information.
+For detailed response layout specifications and constraint edge-cases, see `../docs/answering-rules.md`.
 
 ## Review Rules
 

@@ -55,17 +55,13 @@ The source layer currently targets:
 
 ## Setup
 
-This project currently has no required runtime dependencies for the source
-notes. Later issues may add qmd setup instructions for searching the Markdown
-wiki.
+This project has no required runtime dependencies for reading or editing the
+Markdown wiki. Retrieval tooling can be configured with `qmd.yml`.
 
 ```bash
 git clone <repo-url>
 cd sw-architectures
 ```
-
-There are no required runtime dependencies for reading or editing the Markdown
-wiki. Retrieval tooling can be configured with `qmd.yml`.
 
 ## How To Work On Issue 1
 

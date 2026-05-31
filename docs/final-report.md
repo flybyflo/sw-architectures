@@ -22,7 +22,7 @@ Our knowledge base incorporates two distinct layers of source material:
    - **Git**: Distributed version control and content-addressed databases.
    - **MediaWiki**: Wikipedia-scale layered caching and extensible hooks.
    - **Hadoop HDFS**: High-throughput distributed block storage.
-   - **LLVM**: Decoupled, modular compiler pipelines and target independent IR.
+   - **LLVM**: Decoupled, modular compiler pipelines and target-independent IR.
    - *Supplementary systems* like Eclipse, Jitsi, Moodle, and Mercurial.
 2. **Extra Sources Layer (`raw_sources/extra_sources/`)**: System design articles (e.g., ByteByteGo) covering shared distributed systems patterns. This covers:
    - API Gateways (edge routing, composition, rate-limiting).
@@ -98,13 +98,13 @@ Rather than using a heavy, black-box Python RAG pipeline (which requires indexin
 
 ## 5. Question Bank
 The Curated Question Bank under `questions/typical-architecture-questions.md` contains **24 typical software architecture questions** mapped to their design rationale, targeted source files, and expected wiki page resolutions. 
-* **16 Core Questions** were selected for evaluation, covering Components & Interfaces, Data & State Management, Architectural Styles, Quality Attributes, High-Level Web Design, and Cross-Project Comparisons.
-* **Coverage Gap baseline questions (Q22 and Q23)** were intentionally included to assess the system's capacity to detect missing wiki content and report truthfulness rather than hallucinating answers.
+* **17 Core Questions** were selected for evaluation, covering Components & Interfaces, Data & State Management, Architectural Styles, Quality Attributes, High-Level Web Design, and Cross-Project Comparisons.
+* **Coverage Gap baseline question (Q22)** was intentionally included to assess the system's capacity to detect missing wiki content and report truthfulness rather than hallucinating answers.
 
 ---
 
 ## 6. Example Questions & Answers
-For this evaluation, we ran all **18 selected questions** (the 16 core questions plus Q18 and Q22). The generated answers are stored in [evaluation/evaluation-results.md](../evaluation/evaluation-results.md). 
+For this evaluation, we ran all **18 selected questions** (Q01–Q17 and Q22). The generated answers are stored in [evaluation/evaluation-results.md](../evaluation/evaluation-results.md). 
 
 Here are two prominent examples demonstrating the structure and fidelity:
 
@@ -174,7 +174,7 @@ We manually validated all generated answers in [evaluation/manual-validation.md]
 * **Fidelity Rating**: The system achieved a **5.0/5.0 average Correctness** and **5.0/5.0 average Completeness** score.
 * **Verification**: We successfully demonstrated that:
   - Answers for project-specific components (LLVM IR, nginx workers, HDFS DataNodes) were extracted perfectly from the reviewed pages.
-  - Cross-project comparative queries (modibility in Eclipse vs Jitsi vs MediaWiki, scalability in nginx vs HDFS) yielded precise structural comparisons.
+  - Cross-project comparative queries (modifiability in Eclipse vs Jitsi vs MediaWiki, scalability in nginx vs HDFS) yielded precise structural comparisons.
   - The agent **did not hallucinate** when evaluating the blank spaces (Q22). Instead, it correctly reported that the reviewed wiki layer lacked generic microservice patterns, demonstrating perfect compliance with `answering-rules.md` context requirements.
 
 ---

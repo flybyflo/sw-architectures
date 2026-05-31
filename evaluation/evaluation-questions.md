@@ -3,15 +3,15 @@
 This document lists the questions selected for the Architecture Wiki evaluation.
 Questions are drawn from
 [questions/typical-architecture-questions.md](../questions/typical-architecture-questions.md).
-All 16 core-evaluation questions are included, plus 2 supplementary questions to
-broaden coverage (Q18 and Q21).
+17 core-evaluation questions are included, plus 1 supplementary coverage-gap question to
+broaden coverage (Q22).
 
 ## Selection Criteria
 
 1. Cover every question category at least once.
-2. Include all questions marked `Evaluation: Yes` in the question bank.
-3. Add supplementary questions that test cross-project comparison depth (Q18) and
-   project-specific quality attribute depth (Q21).
+2. Include questions marked for evaluation in the question bank.
+3. Add a supplementary question that tests coverage-gap detection and honesty under
+   missing wiki content (Q22).
 4. Total: **18 questions** (exceeds the minimum of 12).
 
 ## Selected Questions

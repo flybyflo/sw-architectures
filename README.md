@@ -9,13 +9,17 @@ The project follows a three-layer LLM Wiki design:
 
 1. Raw sources are kept in `raw_sources/`.
 2. Reviewed wiki pages are kept in `wiki/`.
-3. Agent/query workflow, qmd retrieval, and evaluation documentation are added
-   in later issues under `docs/`, `evaluation/`, and supporting config files.
+3. Agent/query workflow, qmd retrieval, and evaluation documentation live under
+   `docs/`, `evaluation/`, and supporting config files.
 
 ## Current Scope
 
 Issue 1 sets up the repository structure and working rules.
 Issue 2 collects raw source-layer notes from AOSA and selected optional sources.
+Issue 4 defines the reviewed wiki schema, templates, linking rules, and
+maintainer instructions.
+Issue 5 creates the first reviewed project pages, ADRs, shared component pages,
+pattern pages, and quality-attribute pages.
 
 The source layer currently targets:
 
@@ -51,16 +55,13 @@ The source layer currently targets:
 
 ## Setup
 
-This project currently has no required runtime dependencies for the source
-notes. Later issues may add qmd setup instructions for searching the Markdown
-wiki.
+This project has no required runtime dependencies for reading or editing the
+Markdown wiki. Retrieval tooling can be configured with `qmd.yml`.
 
 ```bash
 git clone <repo-url>
 cd sw-architectures
 ```
-
-There are no runtime dependencies yet.
 
 ## How To Work On Issue 1
 
@@ -106,3 +107,8 @@ Optional non-AOSA source notes, such as ByteByteGo articles, belong in
 - Keep links relative inside the repository.
 - Update `wiki/log.md` when adding or changing reviewed wiki content.
 - Use pull requests so another team member can review content before merging.
+
+## Design Rationale
+
+The knowledge-base design rationale is summarized in
+`docs/wiki-design-decisions.md`.

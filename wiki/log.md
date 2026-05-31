@@ -41,3 +41,15 @@ and follow-up work.
   source-note traceability.
 - Follow-up: add more reviewed pages from the remaining AOSA and extra source
   notes.
+
+## 2026-05-31
+
+### Evaluation Validation and Gap Identification
+- Change type: evaluation, manual validation, gap analysis, and roadmap.
+- Scope: issue #8 (Assignment 3+4 final task).
+- Source notes consulted:
+  - `raw_sources/extra_sources/bytebytego-*.md`
+  - `raw_sources/aosa/*.md`
+- Validation performed: Manually evaluated 18 architecture questions (Q01-Q17, Q22). All generated answers conform strictly to the docs/answering-rules.md templates.
+- Gaps identified: Verified complete coverage for five core projects, but found a lack of synthesized pages in wiki/patterns/ and wiki/components/ for general microservice design blocks (API gateway, sharding, messaging topologies), causing fallback to raw sources.
+- Follow-up: Synthesize the planned pages under wiki/components/ and wiki/patterns/ from the ByteByteGo raw sources to eliminate raw source fallback.

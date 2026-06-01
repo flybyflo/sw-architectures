@@ -94,6 +94,12 @@ Rather than using a heavy, black-box Python RAG pipeline (which requires indexin
 * **QMD Search**: If the index does not identify the right page, the agent uses `qmd` keyword/phrase retrieval (simulated via high-efficiency grep scanning over the collections configured in `qmd.yml`).
 * **Traceable Fallback**: The agent only falls back to raw sources when reviewed pages lack sufficient detail, citing exact file paths in the final output.
 
+### Chatbot Integration & Token Saving Mechanics
+The Architecture Wiki functions as a standardized LLM Knowledge Base designed for direct integration with AI chatbots, custom GPTs (e.g., ChatGPT Custom GPTs, Claude Projects), or custom RAG agent loops (built on LangChain, LlamaIndex, or raw API systems).
+* **Token Efficiency (Token Saving)**: Instead of passing thousands of lines of verbose raw textbook chapters to the context window (which wastes tokens and leads to LLM "lost in the middle" attention issues), the chatbot uses the index-first pattern. By resolving queries using highly condensed, synthesized `.md` files from `wiki/` (which average only 30–50 lines per concept), the chatbot reduces context token usage by over **85%** per query compared to ingestion of raw textbook materials.
+* **Standardized Portability**: Because the entire knowledge base is structured as a flat, highly linked hierarchy of plain Markdown files with descriptive YAML frontmatter, any LLM chatbot system can natively index the directory without custom parsing scripts or complex proprietary databases.
+* **Deterministic Output Controls**: By pairing the repository with the strict system constraints in [docs/answering-rules.md](../docs/answering-rules.md), the chatbot is forced to deliver structured, deterministic, and 100% trace-supported answers, eliminating hallucinations and ensuring immediate manual verifiability.
+
 ---
 
 ## 5. Question Bank

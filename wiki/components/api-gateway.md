@@ -41,8 +41,8 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 ## Project Uses
 
 - [nginx](../projects/nginx.md): nginx's reverse proxy capabilities and event-driven non-blocking worker processes are conceptually aligned with high-concurrency request routing and entry mediation.
-- `../../raw_sources/extra_sources/bytebytego-api-gateway.md`: serves as a core entry pattern for microservice and service-oriented architectures.
+- [ByteByteGo API Gateway source note](../../raw_sources/extra_sources/bytebytego-api-gateway.md): serves as a core entry pattern for microservice and service-oriented architectures.
 
 ## Related Decisions
 
-- `../adrs/nginx-adr-001-event-driven-worker-model.md`: nginx's reverse proxy capabilities and event-driven non-blocking worker processes are conceptually aligned with high-concurrency request routing and entry mediation.
+- [nginx ADR 001: Event-driven worker model](../adrs/nginx-adr-001-event-driven-worker-model.md)

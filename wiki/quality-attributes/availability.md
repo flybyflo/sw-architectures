@@ -21,7 +21,7 @@ Availability is the proportion of time a system remains operational and capable 
 
 - [Hadoop HDFS](../projects/hadoop-hdfs.md): HDFS achieves high availability at the DataNode level by replicating blocks across multiple nodes and racks. However, in its basic design, the central NameNode represents a single point of failure (SPOF) for namespace metadata.
 - [nginx](../projects/nginx.md): nginx ensures availability and service continuity through its process model, separating a privileged master process (which supervises worker processes and orchestrates binary upgrades or configuration changes without downtime) from non-blocking worker processes.
-- `../../raw_sources/extra_sources/bytebytego-distributed-reliability.md`: Explains how service-oriented systems isolate dependencies using circuit breakers and bulkheads to prevent a single slow node from reducing the entire cluster's availability.
+- [ByteByteGo Distributed System Reliability source note](../../raw_sources/extra_sources/bytebytego-distributed-reliability.md): Explains how service-oriented systems isolate dependencies using circuit breakers and bulkheads to prevent a single slow node from reducing the entire cluster's availability.
 
 ## Supporting Decisions And Patterns
 

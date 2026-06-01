@@ -15,7 +15,7 @@ sources:
 
 ## Summary
 
-Distributed Systems fail inevitably due to node crashes, network partitions, dependency timeouts, and traffic overloads. Distributed Reliability is a set of patterns and design tactics—including retries, timeouts, circuit breakers, rate limiting, and bulkhead isolation—that absorb partial failures, prevent cascading collapses, and maintain overall service guarantees under stress.
+Distributed systems fail inevitably due to node crashes, network partitions, dependency timeouts, and traffic overloads. Distributed Reliability is a set of patterns and design tactics—including retries, timeouts, circuit breakers, rate limiting, and bulkhead isolation—that absorb partial failures, prevent cascading collapses, and maintain overall service guarantees under stress.
 
 ## Forces
 
@@ -25,9 +25,9 @@ Distributed Systems fail inevitably due to node crashes, network partitions, dep
 
 ## Project Uses
 
-- `../../raw_sources/extra_sources/bytebytego-distributed-reliability.md`: details retries, circuit breakers, rate limiters, bulkheads, and health checks.
-- `../projects/hadoop-hdfs.md`: HDFS NameNode detects DataNode failures via heartbeat timeouts and triggers block replication to restore the configured reliability level.
-- `../projects/nginx.md`: nginx implements connection-level rate limiting and master-worker process isolation to prevent individual request failures from crashing the server.
+- [ByteByteGo Distributed System Reliability source note](../../raw_sources/extra_sources/bytebytego-distributed-reliability.md): details retries, circuit breakers, rate limiters, bulkheads, and health checks.
+- [Hadoop HDFS](../projects/hadoop-hdfs.md): HDFS NameNode detects DataNode failures via heartbeat timeouts and triggers block replication to restore the configured reliability level.
+- [nginx](../projects/nginx.md): nginx implements connection-level rate limiting and master-worker process isolation to prevent individual request failures from crashing the server.
 
 ## Tradeoffs
 
@@ -42,5 +42,5 @@ Distributed Systems fail inevitably due to node crashes, network partitions, dep
 
 ## Related Pages
 
-- `../quality-attributes/reliability.md`
-- `../components/event-loop.md`
+- [Reliability](../quality-attributes/reliability.md)
+- [Event loop](../components/event-loop.md)

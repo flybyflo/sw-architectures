@@ -23,8 +23,8 @@ Caching is an architectural pattern that stores previously computed or retrieved
 
 ## Project Uses
 
-- `../../raw_sources/extra_sources/bytebytego-caching-strategies.md`: defines cache-aside, read-through, write-through, and write-back caching.
-- `../projects/mediawiki.md`: MediaWiki relies heavily on layered caching—including HTTP reverse proxies, application-level object caching, and database caches—to protect the PHP request path.
+- [ByteByteGo Caching Strategies source note](../../raw_sources/extra_sources/bytebytego-caching-strategies.md): defines cache-aside, read-through, write-through, and write-back caching.
+- [MediaWiki](../projects/mediawiki.md): MediaWiki relies heavily on layered caching—including HTTP reverse proxies, application-level object caching, and database caches—to protect the PHP request path.
 
 ## Tradeoffs
 
@@ -39,6 +39,6 @@ Caching is an architectural pattern that stores previously computed or retrieved
 
 ## Related Pages
 
-- `../quality-attributes/performance.md`
-- `../quality-attributes/scalability.md`
-- `../components/plugin-system.md`
+- [Performance](../quality-attributes/performance.md)
+- [Scalability](../quality-attributes/scalability.md)
+- [Plugin system](../components/plugin-system.md)

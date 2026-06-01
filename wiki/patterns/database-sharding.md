@@ -23,8 +23,8 @@ Database Sharding partitions a logical database horizontally into smaller, indep
 
 ## Project Uses
 
-- `../../raw_sources/extra_sources/bytebytego-database-sharding.md`: describes range-based, hash-based, and directory-based database sharding.
-- `../projects/hadoop-hdfs.md`: Hadoop HDFS scales storage horizontally by distributing replicated blocks across many DataNodes, sharing a conceptually similar horizontal data partitioning approach.
+- [ByteByteGo Database Sharding source note](../../raw_sources/extra_sources/bytebytego-database-sharding.md): describes range-based, hash-based, and directory-based database sharding.
+- [Hadoop HDFS](../projects/hadoop-hdfs.md): Hadoop HDFS scales storage horizontally by distributing replicated blocks across many DataNodes, sharing a conceptually similar horizontal data partitioning approach.
 
 ## Tradeoffs
 
@@ -39,5 +39,5 @@ Database Sharding partitions a logical database horizontally into smaller, indep
 
 ## Related Pages
 
-- `../quality-attributes/scalability.md`
-- `../components/namenode.md`
+- [Scalability](../quality-attributes/scalability.md)
+- [NameNode](../components/namenode.md)

@@ -35,7 +35,7 @@ A Message Broker is a central mediation component that decouples message produce
 
 ## Project Uses
 
-- `../../raw_sources/extra_sources/bytebytego-messaging-patterns.md`: defines central message broker topologies including queues, pub-sub topics, and event streams.
+- [ByteByteGo Messaging Patterns source note](../../raw_sources/extra_sources/bytebytego-messaging-patterns.md): defines central message broker topologies including queues, pub-sub topics, and event streams.
 
 ## Related Decisions
 

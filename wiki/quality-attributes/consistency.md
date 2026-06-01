@@ -18,14 +18,14 @@ Consistency defines the system guarantees regarding state uniformity across mult
 
 ## Project Comparisons
 
-- `../projects/git.md`: Git is eventually consistent by design. Developers work on local content-addressed history copies and synchronize branches asynchronously via push and pull operations, accepting divergence and manual merge reconciliation.
-- `../../raw_sources/extra_sources/bytebytego-caching-strategies.md`: Discusses the consistency impact of caching strategies. Write-through caching achieves strong consistency between RAM and DB but adds latency, whereas cache-aside or write-back caching introduces stale-read windows.
-- `../../raw_sources/extra_sources/bytebytego-database-sharding.md`: Multi-shard systems must deal with the extreme difficulty of maintaining cross-shard consistency or global constraints, often settling for localized single-shard consistency.
+- [git](../projects/git.md): Git is eventually consistent by design. Developers work on local content-addressed history copies and synchronize branches asynchronously via push and pull operations, accepting divergence and manual merge reconciliation.
+- [ByteByteGo Caching Strategies source note](../../raw_sources/extra_sources/bytebytego-caching-strategies.md): Discusses the consistency impact of caching strategies. Write-through caching achieves strong consistency between RAM and DB but adds latency, whereas cache-aside or write-back caching introduces stale-read windows.
+- [ByteByteGo Database Sharding source note](../../raw_sources/extra_sources/bytebytego-database-sharding.md): Multi-shard systems must deal with the extreme difficulty of maintaining cross-shard consistency or global constraints, often settling for localized single-shard consistency.
 
 ## Supporting Decisions And Patterns
 
-- `../patterns/caching-strategies.md`: Cache invalidation event patterns are required to minimize the window of inconsistency.
-- `../adrs/git-adr-001-content-addressed-storage.md`: Git's cryptographic content hashes guarantee absolute history and object consistency: tampering with any past version produces a completely different hash tree.
+- [Caching Strategies](../patterns/caching-strategies.md): Cache invalidation event patterns are required to minimize the window of inconsistency.
+- [Git ADR 001: Content-addressed storage](../adrs/git-adr-001-content-addressed-storage.md): Git's cryptographic content hashes guarantee absolute history and object consistency: tampering with any past version produces a completely different hash tree.
 
 ## Tradeoffs
 

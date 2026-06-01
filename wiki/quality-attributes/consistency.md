@@ -2,8 +2,12 @@
 title: Consistency
 type: quality-attribute
 status: reviewed
-projects: [git]
-sources: [../../raw_sources/extra_sources/bytebytego-caching-strategies.md, ../../raw_sources/extra_sources/bytebytego-database-sharding.md, ../../raw_sources/aosa/git.md]
+projects:
+  - ../projects/git.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-caching-strategies.md
+  - ../../raw_sources/extra_sources/bytebytego-database-sharding.md
+  - ../../raw_sources/aosa/git.md
 ---
 
 # Consistency

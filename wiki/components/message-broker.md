@@ -2,8 +2,9 @@
 title: Message Broker
 type: component
 status: reviewed
-projects: [hadoop-hdfs]
-sources: [../../raw_sources/extra_sources/bytebytego-messaging-patterns.md, ../../raw_sources/aosa/hadoop-hdfs.md]
+projects: []
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-messaging-patterns.md
 ---
 
 # Message Broker
@@ -38,4 +39,4 @@ A Message Broker is a central mediation component that decouples message produce
 
 ## Related Decisions
 
-- `../adrs/hdfs-adr-001-namenode-datanode-separation.md`: The separation of namespace coordination (NameNode) from data block storage (DataNodes) in HDFS is conceptually analogous to separating metadata coordination from physical message partition storage in a distributed broker cluster.
+- None.

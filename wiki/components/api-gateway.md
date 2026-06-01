@@ -2,8 +2,11 @@
 title: API Gateway
 type: component
 status: reviewed
-projects: [nginx]
-sources: [../../raw_sources/extra_sources/bytebytego-api-gateway.md, ../../raw_sources/aosa/nginx.md]
+projects:
+  - ../projects/nginx.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-api-gateway.md
+  - ../../raw_sources/aosa/nginx.md
 ---
 
 # API Gateway
@@ -37,6 +40,7 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 
 ## Project Uses
 
+- [nginx](../projects/nginx.md): nginx's reverse proxy capabilities and event-driven non-blocking worker processes are conceptually aligned with high-concurrency request routing and entry mediation.
 - `../../raw_sources/extra_sources/bytebytego-api-gateway.md`: serves as a core entry pattern for microservice and service-oriented architectures.
 
 ## Related Decisions

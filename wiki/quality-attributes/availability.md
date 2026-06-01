@@ -2,8 +2,13 @@
 title: Availability
 type: quality-attribute
 status: reviewed
-projects: [hadoop-hdfs, nginx]
-sources: [../../raw_sources/extra_sources/bytebytego-distributed-reliability.md, ../../raw_sources/aosa/hadoop-hdfs.md, ../../raw_sources/aosa/nginx.md]
+projects:
+  - ../projects/hadoop-hdfs.md
+  - ../projects/nginx.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-distributed-reliability.md
+  - ../../raw_sources/aosa/hadoop-hdfs.md
+  - ../../raw_sources/aosa/nginx.md
 ---
 
 # Availability
@@ -14,14 +19,14 @@ Availability is the proportion of time a system remains operational and capable 
 
 ## Project Comparisons
 
-- `../projects/hadoop-hdfs.md`: HDFS achieves high availability at the DataNode level by replicating blocks across multiple nodes and racks. However, in its basic design, the central NameNode represents a single point of failure (SPOF) for namespace metadata.
-- `../projects/nginx.md`: nginx ensures availability and service continuity through its process model, separating a privileged master process (which supervises worker processes and orchestrates binary upgrades or configuration changes without downtime) from non-blocking worker processes.
+- [Hadoop HDFS](../projects/hadoop-hdfs.md): HDFS achieves high availability at the DataNode level by replicating blocks across multiple nodes and racks. However, in its basic design, the central NameNode represents a single point of failure (SPOF) for namespace metadata.
+- [nginx](../projects/nginx.md): nginx ensures availability and service continuity through its process model, separating a privileged master process (which supervises worker processes and orchestrates binary upgrades or configuration changes without downtime) from non-blocking worker processes.
 - `../../raw_sources/extra_sources/bytebytego-distributed-reliability.md`: Explains how service-oriented systems isolate dependencies using circuit breakers and bulkheads to prevent a single slow node from reducing the entire cluster's availability.
 
 ## Supporting Decisions And Patterns
 
-- `../patterns/distributed-reliability.md`: Circuit breakers, rate limiters, and exponential retries protect system-wide availability.
-- `../adrs/hdfs-adr-001-namenode-datanode-separation.md`: Separating metadata coordination from replicated storage allows HDFS block reads/writes to remain highly available even if NameNode metadata access undergoes load.
+- [Distributed Reliability](../patterns/distributed-reliability.md): Circuit breakers, rate limiters, and exponential retries protect system-wide availability.
+- [HDFS ADR 001: NameNode/DataNode separation](../adrs/hdfs-adr-001-namenode-datanode-separation.md): Centralizes metadata in the NameNode while distributing block storage to DataNodes, ensuring read availability through replica retrieval even if individual DataNodes fail, while establishing the NameNode as the system's central availability constraint.
 
 ## Tradeoffs
 

@@ -2,8 +2,11 @@
 title: Database Sharding
 type: pattern
 status: reviewed
-projects: [hadoop-hdfs]
-sources: [../../raw_sources/extra_sources/bytebytego-database-sharding.md, ../../raw_sources/aosa/hadoop-hdfs.md]
+projects:
+  - ../projects/hadoop-hdfs.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-database-sharding.md
+  - ../../raw_sources/aosa/hadoop-hdfs.md
 ---
 
 # Database Sharding

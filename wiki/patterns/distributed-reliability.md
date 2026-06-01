@@ -2,8 +2,13 @@
 title: Distributed Reliability
 type: pattern
 status: reviewed
-projects: [hadoop-hdfs, nginx]
-sources: [../../raw_sources/extra_sources/bytebytego-distributed-reliability.md, ../../raw_sources/aosa/hadoop-hdfs.md, ../../raw_sources/aosa/nginx.md]
+projects:
+  - ../projects/hadoop-hdfs.md
+  - ../projects/nginx.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-distributed-reliability.md
+  - ../../raw_sources/aosa/hadoop-hdfs.md
+  - ../../raw_sources/aosa/nginx.md
 ---
 
 # Distributed Reliability

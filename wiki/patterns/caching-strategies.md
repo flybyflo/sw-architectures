@@ -2,8 +2,11 @@
 title: Caching Strategies
 type: pattern
 status: reviewed
-projects: [mediawiki]
-sources: [../../raw_sources/extra_sources/bytebytego-caching-strategies.md, ../../raw_sources/aosa/mediawiki.md]
+projects:
+  - ../projects/mediawiki.md
+sources:
+  - ../../raw_sources/extra_sources/bytebytego-caching-strategies.md
+  - ../../raw_sources/aosa/mediawiki.md
 ---
 
 # Caching Strategies

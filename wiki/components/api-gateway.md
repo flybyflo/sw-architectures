@@ -2,8 +2,8 @@
 title: API Gateway
 type: component
 status: reviewed
-projects: []
-sources: [raw_sources/extra_sources/bytebytego-api-gateway.md]
+projects: [nginx]
+sources: [../../raw_sources/extra_sources/bytebytego-api-gateway.md, ../../raw_sources/aosa/nginx.md]
 ---
 
 # API Gateway
@@ -22,23 +22,23 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 ## State And Interfaces
 
 ### Interfaces Exposed
-- **Public Client API**: Standard HTTP/HTTPS (REST, GraphQL, gRPC) public interface.
-- **Policy and Configuration Interface**: Administrative endpoint or dashboard for dynamically modifying routing rules, rate limiters, and security policies.
+- **Public Client API**: Standard HTTP/HTTPS public client interface.
+- **Policy and Configuration Interface**: Administrative interface for dynamically modifying routing rules, rate limiters, and security policies.
 
 ### Interfaces Consumed
 - **Identity Provider API**: Used for credential validation and token introspection.
 - **Service Discovery API**: Used to fetch backend IP addresses and ports dynamically.
-- **Backend Service HTTP/gRPC APIs**: Downstream service endpoints.
+- **Backend Service APIs**: Downstream service endpoints.
 
 ### State Owned or Tracked
-- **Routing Table / Shard Map**: In-memory configuration mapping public routes to downstream URL templates.
-- **Rate Limiting Tokens / Counters**: State managed via algorithms like Token Bucket or Leaky Bucket (often persisted in high-performance caches like Redis) per user, key, tenant, or route.
-- **Cached Responses**: Temporary local storage of idempotent downstream HTTP responses.
+- **Routing Table / Configuration**: In-memory configuration mapping public routes to downstream service templates.
+- **Rate Limiting Tokens / Counters**: State managed via algorithms like Token Bucket per user, key, tenant, or route.
+- **Cached Responses**: Temporary local storage of idempotent downstream responses.
 
 ## Project Uses
 
-- `raw_sources/extra_sources/bytebytego-api-gateway.md`: serves as a core entry pattern for microservice and service-oriented architectures.
+- `../../raw_sources/extra_sources/bytebytego-api-gateway.md`: serves as a core entry pattern for microservice and service-oriented architectures.
 
 ## Related Decisions
 
-- `../adrs/nginx-adr-001-event-driven-worker-model.md`: nginx event-driven non-blocking architecture is frequently used to implement high-throughput API Gateways.
+- `../adrs/nginx-adr-001-event-driven-worker-model.md`: nginx's reverse proxy capabilities and event-driven non-blocking worker processes are conceptually aligned with high-concurrency request routing and entry mediation.

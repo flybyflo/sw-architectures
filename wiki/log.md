@@ -65,6 +65,7 @@ and follow-up work.
   - `raw_sources/extra_sources/bytebytego-database-sharding.md`
   - `raw_sources/extra_sources/bytebytego-caching-strategies.md`
   - `raw_sources/extra_sources/bytebytego-distributed-reliability.md`
+  - `raw_sources/extra_sources/bytebytego-architecture-patterns.md`
 - Reviewed pages created:
   - Components: `wiki/components/api-gateway.md`, `wiki/components/message-broker.md`
   - Patterns: `wiki/patterns/database-sharding.md`, `wiki/patterns/caching-strategies.md`, `wiki/patterns/distributed-reliability.md`

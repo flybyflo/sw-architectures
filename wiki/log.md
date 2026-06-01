@@ -53,3 +53,24 @@ and follow-up work.
 - Validation performed: Manually evaluated 18 architecture questions (Q01-Q17, Q22). All generated answers conform strictly to the docs/answering-rules.md templates.
 - Gaps identified: Verified complete coverage for five core projects, but found a lack of synthesized pages in wiki/patterns/ and wiki/components/ for general microservice design blocks (API gateway, sharding, messaging topologies), causing fallback to raw sources.
 - Follow-up: Synthesize the planned pages under wiki/components/ and wiki/patterns/ from the ByteByteGo raw sources to eliminate raw source fallback.
+
+## 2026-06-01
+
+### Closing the Gaps: Full Synthesis of Extra Sources
+- Change type: reviewed wiki content, index updates, link validation.
+- Scope: issue #12 (Finalizing Architecture Wiki and addressing review gaps).
+- Source notes consulted:
+  - `raw_sources/extra_sources/bytebytego-api-gateway.md`
+  - `raw_sources/extra_sources/bytebytego-messaging-patterns.md`
+  - `raw_sources/extra_sources/bytebytego-database-sharding.md`
+  - `raw_sources/extra_sources/bytebytego-caching-strategies.md`
+  - `raw_sources/extra_sources/bytebytego-distributed-reliability.md`
+  - `raw_sources/extra_sources/bytebytego-architecture-patterns.md`
+- Reviewed pages created:
+  - Components: `wiki/components/api-gateway.md`, `wiki/components/message-broker.md`
+  - Patterns: `wiki/patterns/database-sharding.md`, `wiki/patterns/caching-strategies.md`, `wiki/patterns/distributed-reliability.md`
+  - Quality Attributes: `wiki/quality-attributes/availability.md`, `wiki/quality-attributes/consistency.md`
+- Updates performed: Integrated all new reviewed pages into `wiki/index.md` under Components, Patterns, Quality Attributes, and Source Notes.
+- Validation: Verified that all new pages conform strictly to the reusable skeletons in `wiki/templates/`, have correct frontmatter, valid relative links, and appropriate source traceability to avoid raw source fallback.
+- Follow-up: Deliver final project review and Copilot integration strategy to the user.
+

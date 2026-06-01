@@ -45,6 +45,10 @@ to raw source notes.
   coordinator.
 - [Intermediate representation](components/intermediate-representation.md):
   LLVM IR as a compiler pipeline boundary.
+- [API Gateway](components/api-gateway.md): unified client-facing entry point
+  for modern service topologies.
+- [Message Broker](components/message-broker.md): asynchronous messaging and
+  event-buffering mediation component.
 
 ## Patterns
 
@@ -56,6 +60,12 @@ to raw source notes.
   that own metadata, data, or request processing.
 - [Content-addressed storage](patterns/content-addressed-storage.md): data
   identity derived from content hashes.
+- [Database Sharding](patterns/database-sharding.md): horizontal partitioning
+  of logical databases across independent nodes.
+- [Caching Strategies](patterns/caching-strategies.md): RAM-based fast-access
+  patterns (cache-aside, write-through, etc.) to bypass disk/network.
+- [Distributed Reliability](patterns/distributed-reliability.md): tactics
+  (retries, circuit breakers, bulkheads) to absorb partial failures.
 
 ## Quality Attributes
 
@@ -69,6 +79,10 @@ to raw source notes.
   extend, or compose the system.
 - [Security](quality-attributes/security.md): isolation, permissions, integrity,
   and abuse-resistance concerns documented in the source notes.
+- [Availability](quality-attributes/availability.md): operational uptime,
+  heartbeat monitoring, node failover, and redundancy.
+- [Consistency](quality-attributes/consistency.md): uniform state guarantees,
+  comparing strong and eventual consistency models.
 
 ## Source Notes
 
@@ -79,6 +93,12 @@ Raw source notes are verification inputs, not the preferred answer layer.
 - [MediaWiki source note](../raw_sources/aosa/mediawiki.md)
 - [Hadoop HDFS source note](../raw_sources/aosa/hadoop-hdfs.md)
 - [LLVM source note](../raw_sources/aosa/llvm.md)
+- [ByteByteGo API Gateway source note](../raw_sources/extra_sources/bytebytego-api-gateway.md)
+- [ByteByteGo Software Architecture Patterns source note](../raw_sources/extra_sources/bytebytego-architecture-patterns.md)
+- [ByteByteGo Caching Strategies source note](../raw_sources/extra_sources/bytebytego-caching-strategies.md)
+- [ByteByteGo Database Sharding source note](../raw_sources/extra_sources/bytebytego-database-sharding.md)
+- [ByteByteGo Distributed System Reliability source note](../raw_sources/extra_sources/bytebytego-distributed-reliability.md)
+- [ByteByteGo Messaging Patterns source note](../raw_sources/extra_sources/bytebytego-messaging-patterns.md)
 
 ## Retrieval Order
 

@@ -20,7 +20,6 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 - **Client Application**: Consumes the gateway's exposed public endpoints.
 - **Backend Services**: Downstream systems that receive routed, authenticated, and transformed requests.
 - **Identity Provider**: Used by the gateway to validate authentication credentials and retrieve user roles.
-- **Service Registry / Discovery**: Consulted by the routing engine to resolve dynamic downstream service locations.
 
 ## State And Interfaces
 
@@ -30,7 +29,6 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 
 ### Interfaces Consumed
 - **Identity Provider API**: Used for credential validation and token introspection.
-- **Service Discovery API**: Used to fetch backend IP addresses and ports dynamically.
 - **Backend Service APIs**: Downstream service endpoints.
 
 ### State Owned or Tracked

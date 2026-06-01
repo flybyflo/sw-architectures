@@ -30,5 +30,5 @@ Availability is the proportion of time a system remains operational and capable 
 
 ## Tradeoffs
 
-- **Availability vs. Consistency (CAP Theorem)**: During a network partition, a system must choose between returning an eventual or slightly stale response to remain available, or rejecting the query to guarantee strict consistency.
+- **Availability vs. Consistency**: Under partition or failure scenarios, distributed state designs must balance whether to serve potentially stale cached data to ensure availability, or block requests to protect data consistency.
 - **Complexity vs. Resilience**: Adding redundant nodes, failover managers, and replication synchronization mechanisms increases availability but introduces massive operational complexity and higher infrastructure costs.

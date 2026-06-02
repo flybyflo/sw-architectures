@@ -24,6 +24,6 @@ back to raw notes.
 
 ## Assignment Fit
 
-This implements an LLM knowledge-base style workflow: source-backed Markdown
+This implements an LLM knowledge-base-style workflow: source-backed Markdown
 pages reduce token usage, preserve traceability, and support chatbot-style
 answers to general and project-specific software architecture questions.

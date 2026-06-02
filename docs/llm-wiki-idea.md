@@ -3,6 +3,13 @@
 The Architecture Wiki is designed as a compact, persistent knowledge base for
 LLM-assisted architecture answering.
 
+## Assignment Source Links
+
+The assignment references these LLM Wiki materials:
+
+- [Karpathy's LLM Knowledge Bases post](https://x.com/karpathy/status/2039805659525644595)
+- [Karpathy's LLM Wiki idea file](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+
 ## Core Idea
 
 Instead of sending raw textbook-scale notes directly into a chatbot context
@@ -21,6 +28,22 @@ back to raw notes.
   manually checked.
 - Local scripts make retrieval and validation reproducible without a custom
   vector database.
+
+## Pattern Mapping
+
+Karpathy's idea file describes three operating layers: raw sources, a maintained
+wiki, and a schema file that tells the agent how to ingest, query, and maintain
+the wiki. This repository maps those layers as follows:
+
+- Raw sources: `raw_sources/aosa/` and `raw_sources/extra_sources/`
+- Maintained wiki: `wiki/projects/`, `wiki/adrs/`, `wiki/components/`,
+  `wiki/patterns/`, and `wiki/quality-attributes/`
+- Schema and workflow rules: `AGENTS.md`, `docs/answering-rules.md`, and
+  `wiki/log.md`
+
+The workflow also follows the idea file's index-first query pattern through
+`wiki/index.md`, with QMD retrieval used when deeper semantic or multi-file
+matching is needed.
 
 ## Assignment Fit
 

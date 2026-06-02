@@ -132,3 +132,16 @@ and follow-up work.
 - Validation performed: `qmd update`, `qmd embed`,
   `node scripts/check-questions.mjs`, `node scripts/validate-wiki.mjs`, and
   `git diff --check`.
+
+### Assignment PDF Link Alignment Audit
+- Change type: assignment-link validation and report update.
+- Scope: Verified the embedded assignment PDF links for Karpathy's LLM
+  Knowledge Bases post, Karpathy's LLM Wiki idea file, AOSA, and ByteByteGo.
+- Documentation changed:
+  - `docs/llm-wiki-idea.md`
+  - `docs/final-report.md`
+- Validation performed: assignment PDF text extraction and link extraction,
+  source-link mapping against current repository structure, live URL availability
+  checks, `qmd update`, `qmd embed`, `qmd query`, `qmd status`,
+  `node scripts/check-questions.mjs`, `node scripts/validate-wiki.mjs`, and
+  `git diff --check`.

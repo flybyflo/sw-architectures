@@ -14,6 +14,20 @@ project-specific architecture questions, incorporate AOSA descriptions, justify
 wiki design decisions, support chatbot-style use, collect typical questions, and
 evaluate generated answers through manual validation.
 
+The assignment PDF links to Karpathy's LLM Knowledge Bases post, Karpathy's LLM
+Wiki idea file, AOSA, and ByteByteGo. This repository uses those linked sources
+as follows:
+
+- [Karpathy's LLM Knowledge Bases post](https://x.com/karpathy/status/2039805659525644595):
+  motivates the chatbot-facing, token-saving knowledge-base goal.
+- [Karpathy's LLM Wiki idea file](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f):
+  motivates the raw-source, reviewed-wiki, and schema-rule structure documented
+  in `docs/llm-wiki-idea.md` and `AGENTS.md`.
+- [AOSA](http://aosabook.org/): provides the minimum required architecture
+  source layer under `raw_sources/aosa/`.
+- [ByteByteGo Newsletter](https://blog.bytebytego.com/): provides optional
+  high-quality extra system-design sources under `raw_sources/extra_sources/`.
+
 This repository implements that scope with:
 
 - raw AOSA and optional extra source notes under `raw_sources/`

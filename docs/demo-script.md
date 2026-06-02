@@ -1,78 +1,120 @@
 # Architecture Wiki Demo Script
 
-This script provides a step-by-step walkthrough to demonstrate the Architecture Wiki retrieval workflow, answer generation, and evaluation system.
+This script demonstrates the current Architecture Wiki retrieval workflow,
+answer generation, and validation evidence.
 
----
+## Act 1: Start From The Reviewed Index
 
-## 🎭 Roles
-- **Presenter**: Developer or LLM Agent representing the maintainer organization.
-- **Audience**: Engineering managers, senior architects, or developers evaluating the knowledge base.
+Action:
 
----
+```bash
+sed -n '1,140p' wiki/index.md
+```
 
-## 🎬 Act 1: The Retrieval Workflow (Step-by-Step)
+Narration:
 
-### Step 1: Navigating through the Reviewed Wiki Index
-* **Action**: Open [wiki/index.md](../wiki/index.md) in your editor.
-* **Narrator Says**:
-  > "Instead of feeding arbitrary chunks of text to an LLM, our system is designed to navigate the Architecture Wiki structurally. We start with `wiki/index.md` as our primary directory. This page lists all reviewed projects, ADRs, components, patterns, and quality attributes."
+The system starts from `wiki/index.md` instead of searching arbitrary text
+chunks. The index lists reviewed projects, ADRs, components, patterns, quality
+attributes, and raw verification sources.
 
-### Step 2: Answering a Project-Specific Question (Q01 - nginx)
-* **Action**: Ask the agent or simulate a query using `grep` to locate nginx workers:
-  ```bash
-  grep -rnw "./wiki" -e "worker"
-  ```
-* **Narrator Says**:
-  > "Let's locate where nginx worker details reside. The index immediately points us to `wiki/projects/nginx.md` and `wiki/adrs/nginx-adr-001-event-driven-worker-model.md`. The LLM reads these files and synthesizes the answer, strictly citing its sources."
-* **Result**: Show the generated answer in the console or display Q01 from [evaluation/evaluation-results.md#q01-nginx-component-architecture--process-interaction](../evaluation/evaluation-results.md):
-  ```text
-  Pages consulted:
-  - wiki/index.md
-  - wiki/projects/nginx.md
-  ...
-  Sources used:
-  - wiki/projects/nginx.md
-  - wiki/components/event-loop.md
-  - wiki/adrs/nginx-adr-001-event-driven-worker-model.md
-  ```
+## Act 2: Answer A Project-Specific Question
 
----
+Question:
 
-## 🎬 Act 2: Handling General System Design & Falling Back (Act 2)
+```text
+What are the main components of nginx, and how do the master and worker processes interact?
+```
 
-### Step 1: Querying a Distributed System Topic (Q11 - Caching)
-* **Action**: Query the system about caching strategies. Since `wiki/index.md` does not list a reviewed caching pattern, trigger `qmd` / keyword search:
-  ```bash
-  grep -rnw "./raw_sources" -e "cache-aside"
-  ```
-* **Narrator Says**:
-  > "What happens if we ask a general system-design question like, 'How do caching strategies impact consistency?' The primary index does not list a reviewed page for this. The agent automatically falls back to raw extra sources, finding `raw_sources/extra_sources/bytebytego-caching-strategies.md` via `qmd` (grep) search, and generates a factual response."
-* **Result**: Display Q11 from [evaluation/evaluation-results.md](../evaluation/evaluation-results.md) highlighting the fallback citations in `Sources used`.
+Action:
 
----
+```bash
+qmd search "nginx worker event loop" -c architecture-wiki
+```
 
-## 🎬 Act 3: Assessing Blank Space & Honesty (Act 3)
+Expected path:
 
-### Step 1: Querying the Gaps (Q22 - Coverage Gaps)
-* **Action**: Run the gap assessment query:
-  ```bash
-  grep -rnw "./wiki/components" -e ".gitkeep"
-  ```
-* **Narrator Says**:
-  > "RAG systems often hallucinate answers when they lack information. Watch what happens when we ask our agent: 'Which concepts are currently unanswerable due to empty components folders?' Instead of making up definitions, the agent reads the directory and honestly reports that no reviewed pages exist for modern microservice components, pointing out exactly where the roadmap needs additions."
-* **Result**: Display the answer to Q22.
+- `wiki/projects/nginx.md`
+- `wiki/components/event-loop.md`
+- `wiki/adrs/nginx-adr-001-event-driven-worker-model.md`
 
----
+Result:
 
-## 🎬 Act 4: Reviewing the Roadmaps and Logs
+Show Q01 from `evaluation/evaluation-results.md`.
 
-### Step 1: Inspecting the Roadmaps
-* **Action**: Open [evaluation/wiki-fixes-from-evaluation.md](../evaluation/wiki-fixes-from-evaluation.md) and [wiki/log.md](../wiki/log.md).
-* **Narrator Says**:
-  > "Evaluation is not just a passive check; it actively drives the growth of our knowledge base. The gaps we identified in the evaluation have been logged in `wiki-fixes-from-evaluation.md`, setting a clear roadmap for creating reviewed pages on API Gateways, Sharding, and Messaging Topologies. Every evaluation pass is permanently logged in the append-only `wiki/log.md`."
+## Act 3: Answer A General System-Design Question From Reviewed Pages
 
----
+Question:
 
-## 🏁 Conclusion
-* **Narrator Says**:
-  > "This demo shows that by separating raw sources from reviewed pages, enforcing index-first retrieval, and writing strict agent guidelines, we create a deterministic software architecture wiki. It ensures zero hallucinations, complete verification capability, and an actionable path for continuous documentation growth."
+```text
+How do caching strategies impact consistency?
+```
+
+Action:
+
+```bash
+qmd search "cache-aside write-through consistency" -c architecture-wiki
+```
+
+Expected path:
+
+- `wiki/patterns/caching-strategies.md`
+- `wiki/quality-attributes/consistency.md`
+
+Result:
+
+Show Q11 from `evaluation/evaluation-results.md`. The current implementation no
+longer needs to fall back to raw source notes for this evaluated caching
+question.
+
+## Act 4: Demonstrate Honest Coverage Gaps
+
+Question:
+
+```text
+Which questions are currently unanswerable from the reviewed wiki due to missing content?
+```
+
+Action:
+
+```bash
+qmd search "Bash Asterisk source-only projects" -c architecture-wiki
+```
+
+Narration:
+
+The reviewed wiki contains generic component, pattern, and quality-attribute
+pages, plus reviewed pages for the projects used in the full question bank.
+It still does not contain reviewed pages for every raw AOSA source or every
+specialized architecture topic. The answer should name those gaps instead of
+inventing reviewed coverage.
+
+Result:
+
+Show Q22 from `evaluation/evaluation-results.md`.
+
+## Act 5: Run Structural Validation
+
+Action:
+
+```bash
+node scripts/validate-wiki.mjs
+```
+
+Narration:
+
+The validation script checks relative links, reviewed-page frontmatter, index
+coverage, source URLs, and local absolute file URI portability.
+
+## Act 6: Run Full Question-Bank Retrieval Validation
+
+Action:
+
+```bash
+node scripts/check-questions.mjs
+```
+
+Narration:
+
+This checks all 24 provided testing questions against the real QMD
+`architecture-wiki` collection, with raw-source fallback only where the question
+is explicitly about coverage gaps.

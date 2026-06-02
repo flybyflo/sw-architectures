@@ -2,8 +2,7 @@
 title: Database Sharding
 type: pattern
 status: reviewed
-projects:
-  - ../projects/hadoop-hdfs.md
+projects: []
 sources:
   - ../../raw_sources/extra_sources/bytebytego-database-sharding.md
   - ../../raw_sources/aosa/hadoop-hdfs.md
@@ -21,10 +20,14 @@ Database Sharding partitions a logical database horizontally into smaller, indep
 - **Data Locality**: Places data close to specific users or regions.
 - **Blast Radius Reduction**: Restricts database node failure to only affecting the subset of users on that shard.
 
-## Project Uses
+## Project Uses And Related Concepts
 
+- No reviewed AOSA project is documented as using database sharding as this page
+  defines it.
 - [ByteByteGo Database Sharding source note](../../raw_sources/extra_sources/bytebytego-database-sharding.md): describes range-based, hash-based, and directory-based database sharding.
-- [Hadoop HDFS](../projects/hadoop-hdfs.md): Hadoop HDFS scales storage horizontally by distributing replicated blocks across many DataNodes, sharing a conceptually similar horizontal data partitioning approach.
+- [Hadoop HDFS](../projects/hadoop-hdfs.md): HDFS is a related distributed
+  storage comparison because it spreads replicated file blocks across DataNodes,
+  but it is not a database sharding implementation.
 
 ## Tradeoffs
 

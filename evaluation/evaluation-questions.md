@@ -3,16 +3,19 @@
 This document lists the questions selected for the Architecture Wiki evaluation.
 Questions are drawn from
 [questions/typical-architecture-questions.md](../questions/typical-architecture-questions.md).
-17 core-evaluation questions are included, plus 1 supplementary coverage-gap question to
-broaden coverage (Q22).
+17 core-evaluation questions are included, plus 1 supplementary coverage-gap
+question to broaden coverage (Q22). All 24 questions in the source bank are
+also checked for QMD retrieval coverage with `node scripts/check-questions.mjs`.
 
 ## Selection Criteria
 
 1. Cover every question category at least once.
 2. Include questions marked for evaluation in the question bank.
-3. Add a supplementary question that tests coverage-gap detection and honesty under
-   missing wiki content (Q22).
-4. Total: **18 questions** (exceeds the minimum of 12).
+3. Add a supplementary question that tests coverage-gap detection and honesty
+   under missing reviewed coverage (Q22).
+4. Total scored answer-generation set: **18 questions** (exceeds the minimum of
+   12).
+5. Full retrieval-coverage set: **24 questions** (Q01-Q24).
 
 ## Selected Questions
 
@@ -35,7 +38,7 @@ broaden coverage (Q22).
 | 15 | Q15 | How do architectural decisions in MediaWiki impact performance, modifiability, and security trade-offs? | Quality Attributes (Trade-offs) |
 | 16 | Q16 | Compare how Eclipse, Jitsi, and MediaWiki achieve modularity and extensibility. | Cross-Project Comparison |
 | 17 | Q17 | Compare nginx and HDFS in terms of scalability. | Cross-Project Comparison |
-| 18 | Q22 | Which questions are currently unanswerable from the wiki due to missing content? | Coverage Gaps |
+| 18 | Q22 | Which questions are currently unanswerable from the reviewed wiki due to missing content? | Coverage Gaps |
 
 ## Category Coverage
 
@@ -48,3 +51,17 @@ broaden coverage (Q22).
 | High-Level Architectural Design | Q06 |
 | Cross-Project Comparison | Q16, Q17 |
 | Coverage Gaps | Q22 |
+
+## Full Retrieval Coverage
+
+The remaining question-bank entries are not part of the scored answer-generation
+set, but they are covered by the QMD retrieval check:
+
+| ID | Coverage Focus | Primary Reviewed Pages |
+|---|---|---|
+| Q18 | Git versus Mercurial data management | `wiki/projects/git.md`, `wiki/projects/mercurial.md` |
+| Q19 | API Gateway versus direct service access | `wiki/components/api-gateway.md`, `wiki/patterns/api-gateway-topology.md` |
+| Q20 | Plugin-based modular systems | `wiki/projects/eclipse.md`, `wiki/projects/mediawiki.md`, `wiki/projects/moodle.md`, `wiki/patterns/plugin-architecture.md` |
+| Q21 | Git hash integrity | `wiki/projects/git.md`, `wiki/components/object-database.md`, `wiki/quality-attributes/security.md` |
+| Q23 | Missing project syntheses | `wiki/index.md`, `raw_sources/aosa/catalog.md` |
+| Q24 | Recurring components and patterns | `wiki/components/api-gateway.md`, `wiki/components/message-broker.md`, `wiki/patterns/caching-strategies.md`, `wiki/patterns/asynchronous-messaging.md` |

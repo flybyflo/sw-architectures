@@ -81,7 +81,7 @@ Architecture Wiki.
 
 ## Agent Answer Workflow Rules
 1. **Read `wiki/index.md` first** as the primary navigation source to locate relevant architecture documentation.
-2. **Use `qmd` retrieval** (from Issue #6 configuration) when deeper context, semantic matching, or multi-file search is required.
+2. **Use `qmd` retrieval** from the configured collections when deeper context, semantic matching, or multi-file search is required.
 3. **Prefer reviewed wiki pages** over raw sources. Use `raw_sources/` notes only for verification fallback.
 4. **Cite exact file paths** for all claims made in the output.
 5. **Do not invent missing information.** If the context is insufficient, explicitly declare it.

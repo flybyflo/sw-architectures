@@ -74,3 +74,61 @@ and follow-up work.
 - Validation: Verified that all new pages conform strictly to the reusable skeletons in `wiki/templates/`, have correct frontmatter, valid relative links, and appropriate source traceability to avoid raw source fallback.
 - Follow-up: Deliver final project review and Copilot integration strategy to the user.
 
+## 2026-06-02
+
+### Assignment Alignment and Retrieval Hardening
+- Change type: reviewed wiki content, documentation correction, evaluation
+  refresh, and executable validation support.
+- Scope: Assignment 3+4 completion fixes after stale evaluation artifacts were
+  found.
+- Source notes consulted:
+  - `raw_sources/extra_sources/bytebytego-messaging-patterns.md`
+  - `raw_sources/extra_sources/bytebytego-api-gateway.md`
+  - `raw_sources/extra_sources/bytebytego-database-sharding.md`
+  - `raw_sources/extra_sources/bytebytego-distributed-reliability.md`
+- Reviewed pages changed:
+  - Added `wiki/projects/eclipse.md` and `wiki/projects/jitsi.md` to remove raw
+    fallback from the evaluated extensibility comparison.
+  - Added `wiki/patterns/asynchronous-messaging.md`.
+  - Added `wiki/patterns/plugin-architecture.md` and
+    `wiki/patterns/event-sourcing.md`.
+  - Added `wiki/patterns/load-balancing.md`.
+  - Clarified generic-page relationships in `wiki/components/api-gateway.md` and
+    `wiki/patterns/database-sharding.md`.
+  - Extended `wiki/components/plugin-system.md`,
+    `wiki/quality-attributes/modifiability.md`, and
+    `wiki/quality-attributes/reliability.md`.
+- Tooling added: real QMD retrieval through installed `qmd 2.5.3`, configured
+  collections `architecture-wiki` and `raw-sources`, and
+  `scripts/validate-wiki.mjs` for link, frontmatter, index, source URL, and
+  portability validation.
+- Validation performed: QMD collection indexing, embedding, QMD search checks,
+  Node structural validation, and targeted grep checks for stale gap statements
+  and absolute file URIs.
+
+### Full Question-Bank Retrieval Coverage
+- Change type: reviewed wiki content, evaluation coverage update, and QMD
+  retrieval validation.
+- Scope: User-requested check of all provided testing questions in
+  `questions/typical-architecture-questions.md`.
+- Source notes consulted:
+  - `raw_sources/aosa/mercurial.md`
+  - `raw_sources/aosa/moodle.md`
+  - `raw_sources/extra_sources/bytebytego-api-gateway.md`
+- Reviewed pages created:
+  - `wiki/projects/mercurial.md`
+  - `wiki/projects/moodle.md`
+  - `wiki/patterns/api-gateway-topology.md`
+- Reviewed pages changed:
+  - `wiki/components/plugin-system.md`
+  - `wiki/patterns/plugin-architecture.md`
+  - `wiki/quality-attributes/modifiability.md`
+  - `wiki/quality-attributes/reliability.md`
+  - `wiki/quality-attributes/security.md`
+  - `wiki/index.md`
+- Tooling added: `scripts/check-questions.mjs` validates Q01-Q24 with real QMD
+  retrieval against `architecture-wiki`, using `raw-sources` only for explicit
+  coverage-gap fallback checks.
+- Validation performed: `qmd update`, `qmd embed`,
+  `node scripts/check-questions.mjs`, `node scripts/validate-wiki.mjs`, and
+  `git diff --check`.

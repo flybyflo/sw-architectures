@@ -435,9 +435,7 @@ function qmdQuery({ lex, vec }, collection) {
       collection,
       "-n",
       "10",
-      "--full-path",
-      "--format",
-      "files",
+      "--files",
       "--no-rerank",
     ],
     { encoding: "utf8", timeout: 30000 },
@@ -454,7 +452,9 @@ function qmdQuery({ lex, vec }, collection) {
 
   const files = [];
   for (const line of output.split("\n")) {
-    const match = line.match(/^-?\d+(?:\.\d+)?,([^,]+),/);
+    const match =
+      line.match(/^#[^,]+,-?\d+(?:\.\d+)?,([^,]+),/) ??
+      line.match(/^-?\d+(?:\.\d+)?,([^,]+),/);
     if (match) {
       files.push(normalizePath(match[1]));
     }

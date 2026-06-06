@@ -1,3 +1,5 @@
+# Example Answer: nginx vs HDFS Scalability
+
 Question:
 Compare nginx and Hadoop HDFS in terms of scalability.
 
@@ -6,15 +8,21 @@ Pages consulted:
 - wiki/projects/nginx.md
 - wiki/projects/hadoop-hdfs.md
 - wiki/quality-attributes/scalability.md
-- wiki/patterns/event-driven-architecture.md
-- wiki/patterns/distributed-systems.md
+- wiki/adrs/nginx-adr-001-event-driven-worker-model.md
+- wiki/adrs/hdfs-adr-001-namenode-datanode-separation.md
 
 Answer:
-Nginx and Hadoop HDFS approach system scalability from completely different architectural standpoints due to their disjoint design goals. Nginx optimizes for *concurrency scalability* at the networking layer, using an event-driven, non-blocking engine to manage millions of concurrent web transactions with minimal memory overhead per connection on a single server node. 
-
-Conversely, Hadoop HDFS optimizes for *storage volume and throughput scalability* across thousands of nodes. HDFS scales horizontally by cutting massive data files into fixed large blocks (e.g., 128MB) and distributing them across DataNodes, coordinated by a master NameNode. While Nginx minimizes request latency through efficient single-node CPU scheduling, HDFS maximizes cluster storage and broad data processing throughput.
+nginx and Hadoop HDFS scale different architectural forces. nginx scales
+network concurrency by multiplexing many connections in non-blocking workers
+instead of allocating one thread or process per client. HDFS scales storage
+capacity and aggregate I/O by splitting files into replicated blocks across
+DataNodes while the NameNode coordinates namespace metadata. nginx focuses on
+connection and request throughput; HDFS focuses on distributed data capacity and
+high-throughput block streaming.
 
 Sources used:
 - wiki/projects/nginx.md
 - wiki/projects/hadoop-hdfs.md
 - wiki/quality-attributes/scalability.md
+- wiki/adrs/nginx-adr-001-event-driven-worker-model.md
+- wiki/adrs/hdfs-adr-001-namenode-datanode-separation.md

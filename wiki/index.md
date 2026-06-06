@@ -10,12 +10,20 @@ to raw source notes.
   around master-supervised non-blocking workers.
 - [Git](projects/git.md): distributed version control system built around a
   content-addressed object database and explicit staging index.
+- [Mercurial](projects/mercurial.md): distributed version control system built
+  around revlogs, dirstate tracking, and a compact command model.
 - [MediaWiki](projects/mediawiki.md): wiki platform shaped by Wikipedia-scale
   reads, layered caching, hooks, and wikitext processing.
+- [Moodle](projects/moodle.md): learning management system organized around
+  courses, activities, plugins, roles, capabilities, and database-backed state.
 - [Hadoop HDFS](projects/hadoop-hdfs.md): distributed filesystem using a
   NameNode/DataNode split and replicated large blocks.
 - [LLVM](projects/llvm.md): reusable compiler infrastructure centered on LLVM
   IR, modular passes, and library-based components.
+- [Eclipse](projects/eclipse.md): extensible developer-tool platform built on
+  plugins, extension points, OSGi bundles, and lazy activation.
+- [Jitsi](projects/jitsi.md): communication client organized around OSGi
+  services, protocol providers, media handling, and shared abstractions.
 
 ## Architecture Decision Records
 
@@ -40,7 +48,7 @@ to raw source notes.
 - [Object database](components/object-database.md): immutable content-addressed
   storage used by Git.
 - [Plugin system](components/plugin-system.md): extension mechanism used by
-  MediaWiki hooks, skins, and extensions.
+  Eclipse plugins, Jitsi services, and MediaWiki hooks/extensions.
 - [NameNode](components/namenode.md): HDFS metadata and block-placement
   coordinator.
 - [Intermediate representation](components/intermediate-representation.md):
@@ -62,10 +70,20 @@ to raw source notes.
   identity derived from content hashes.
 - [Database Sharding](patterns/database-sharding.md): horizontal partitioning
   of logical databases across independent nodes.
+- [API Gateway Topology Tradeoffs](patterns/api-gateway-topology.md): compare
+  gateway-mediated client entry with direct client-to-service access.
+- [Load Balancing](patterns/load-balancing.md): traffic distribution across
+  replicated backend nodes.
 - [Caching Strategies](patterns/caching-strategies.md): RAM-based fast-access
   patterns (cache-aside, write-through, etc.) to bypass disk/network.
 - [Distributed Reliability](patterns/distributed-reliability.md): tactics
   (retries, circuit breakers, bulkheads) to absorb partial failures.
+- [Asynchronous Messaging](patterns/asynchronous-messaging.md): queues,
+  publish-subscribe topics, and durable streams for decoupled communication.
+- [Plugin Architecture](patterns/plugin-architecture.md): extension points,
+  bundles, services, and hooks for modular ecosystems.
+- [Event Sourcing](patterns/event-sourcing.md): append-only event history used
+  to reconstruct state.
 
 ## Quality Attributes
 
@@ -90,9 +108,13 @@ Raw source notes are verification inputs, not the preferred answer layer.
 
 - [nginx source note](../raw_sources/aosa/nginx.md)
 - [Git source note](../raw_sources/aosa/git.md)
+- [Mercurial source note](../raw_sources/aosa/mercurial.md)
 - [MediaWiki source note](../raw_sources/aosa/mediawiki.md)
+- [Moodle source note](../raw_sources/aosa/moodle.md)
 - [Hadoop HDFS source note](../raw_sources/aosa/hadoop-hdfs.md)
 - [LLVM source note](../raw_sources/aosa/llvm.md)
+- [Eclipse source note](../raw_sources/aosa/eclipse.md)
+- [Jitsi source note](../raw_sources/aosa/jitsi.md)
 - [ByteByteGo API Gateway source note](../raw_sources/extra_sources/bytebytego-api-gateway.md)
 - [ByteByteGo Software Architecture Patterns source note](../raw_sources/extra_sources/bytebytego-architecture-patterns.md)
 - [ByteByteGo Caching Strategies source note](../raw_sources/extra_sources/bytebytego-caching-strategies.md)
@@ -110,6 +132,5 @@ Raw source notes are verification inputs, not the preferred answer layer.
 
 ## Next Steps
 
-- Add search and answer scripts.
 - Add more reviewed project, ADR, component, pattern, and quality pages from the
   remaining AOSA source notes.

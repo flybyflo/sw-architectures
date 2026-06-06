@@ -6,10 +6,12 @@ projects:
   - ../projects/nginx.md
   - ../projects/git.md
   - ../projects/mediawiki.md
+  - ../projects/moodle.md
 sources:
   - ../../raw_sources/aosa/nginx.md
   - ../../raw_sources/aosa/git.md
   - ../../raw_sources/aosa/mediawiki.md
+  - ../../raw_sources/aosa/moodle.md
 ---
 
 # Security
@@ -26,6 +28,8 @@ and abuse resistance where the source notes document those concerns.
 - [Git](../projects/git.md): hashes connect object identity and integrity.
 - [MediaWiki](../projects/mediawiki.md): permissions, user roles, anti-spam, and
   anti-vandalism features are central to Wikipedia-style operation.
+- [Moodle](../projects/moodle.md): roles, capabilities, and contexts determine
+  access to course, activity, and user data.
 
 ## Supporting Decisions And Patterns
 

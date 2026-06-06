@@ -1,123 +1,150 @@
 # Architecture Wiki
 
-This repository contains a Markdown-based software architecture knowledge base. The goal is to collect architecture information from raw AOSA and distributed systems source materials, transform them into a highly-linked, reviewed wiki layer, and use the knowledge base to answer project-specific, comparative, and general architecture questions.
+This repository contains a Markdown-based software architecture knowledge base
+for answering general, project-specific, and comparative questions about
+software architecture.
 
-The project implements a three-layer LLM Wiki architecture:
-1. **Raw Source Layer (`raw_sources/`)**: Contains immutable book chapters (`aosa/`) and modern system design articles (`extra_sources/`).
-2. **Reviewed Wiki Layer (`wiki/`)**: Contains high-fidelity project syntheses, MADR-style architecture decisions, components, patterns, and quality attribute comparisons.
-3. **Retrieval and Evaluation Layer (`docs/`, `evaluation/`)**: Contains strict LLM/agent formatting rules, manual validation reports, a question bank, and execution workflow guides.
+The implementation follows a three-layer LLM Wiki structure:
 
----
+1. **Raw Source Layer (`raw_sources/`)**: AOSA chapter notes and optional
+   high-quality external source notes.
+2. **Reviewed Wiki Layer (`wiki/`)**: Synthesized project pages, ADRs,
+   components, patterns, and quality attribute pages.
+3. **Retrieval and Evaluation Layer (`qmd.yml`, `scripts/`, `docs/`,
+   `questions/`, `evaluation/`)**: QMD retrieval configuration, structural
+   validation, answer rules, question sets, generated answers, and manual
+   validation evidence.
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 .
-├── AGENTS.md               # Architecture Wiki maintainer rules & workflow instructions
-├── README.md               # Project guide and setup instructions
-├── requirements.txt        # Python dependency placeholder file
-├── qmd.yml                 # QMD CLI config for indexing wiki & raw collections
-├── raw_sources/            # Raw, immutable source notes
-│   ├── aosa/               # Summarized chapters from the Architecture of Open Source Applications
-│   └── extra_sources/      # Modern distributed systems system-design notes (e.g., ByteByteGo)
-├── wiki/                   # Reviewed, synthesized wiki layer
-│   ├── index.md            # Primary directory index (retrieval entry point)
-│   ├── log.md              # Append-only maintainer change log
-│   ├── projects/           # Project synthesis pages (nginx, Git, MediaWiki, HDFS, LLVM)
-│   ├── adrs/               # Architecture Decision Records (MADR format)
-│   ├── components/         # Modular building block pages (e.g., NameNode, Event Loop)
-│   ├── patterns/           # Reusable architectural patterns (e.g., Client-Server)
-│   ├── quality-attributes/ # Comparative quality attribute pages (e.g., Performance)
-│   └── templates/          # Standard page skeletons for wiki maintenance
-├── questions/              # Selected software architecture question bank
-├── evaluation/             # Manual evaluation files
-│   ├── evaluation-questions.md     # The selected set of 18 evaluation questions
-│   ├── evaluation-results.md       # Generated answers following strict layout rules
-│   ├── manual-validation.md        # Correctness/Completeness scores and audit notes
-│   └── wiki-fixes-from-evaluation.md # Roadmap for expanding wiki patterns and components
-└── docs/                   # Supporting documentation
-    ├── agent-tools.md              # LLM tool guidelines and retrieval constraints
-    ├── answering-rules.md          # Mandatory LLM answer structure instructions
-    ├── query-workflow.md           # Setup details for QMD retrieval CLI
-    ├── wiki-design-decisions.md    # Design decisions behind the wiki's organization
-    ├── final-report.md             # Project's final comprehensive report
-    └── demo-script.md              # Scenario script for system demonstration
+├── AGENTS.md
+├── README.md
+├── qmd.yml
+├── raw_sources/
+│   ├── aosa/
+│   └── extra_sources/
+├── wiki/
+│   ├── index.md
+│   ├── log.md
+│   ├── projects/
+│   ├── adrs/
+│   ├── components/
+│   ├── patterns/
+│   ├── quality-attributes/
+│   └── templates/
+├── scripts/
+│   ├── check-questions.mjs
+│   └── validate-wiki.mjs
+├── questions/
+├── evaluation/
+├── example_answers/
+└── docs/
 ```
 
----
+## Reviewed Wiki Coverage
 
-## ⚙️ Setup & QMD Retrieval
+The reviewed layer currently covers nine AOSA projects:
 
-### 1. Basic Setup
-This project uses pure Markdown files for its knowledge representation, meaning it has no required runtime database dependencies for standard usage.
+- nginx
+- Git
+- Mercurial
+- MediaWiki
+- Moodle
+- Hadoop HDFS
+- LLVM
+- Eclipse
+- Jitsi
+
+It also includes reviewed generic architecture pages synthesized from optional
+extra sources:
+
+- Components: API Gateway, Message Broker
+- Patterns: API Gateway Topology Tradeoffs, Asynchronous Messaging, Caching
+  Strategies, Database Sharding, Distributed Reliability, Event Sourcing, Load
+  Balancing, Plugin Architecture, plus core AOSA-derived patterns
+- Quality attributes: Availability, Consistency, Modifiability, Performance,
+  Reliability, Scalability, Security
+
+The remaining AOSA notes are available in `raw_sources/aosa/` as source-backed
+inputs for future reviewed pages.
+
+## Retrieval Workflow
+
+Start with the reviewed index:
+
 ```bash
-git clone <repo-url>
-cd sw-architectures
+sed -n '1,180p' wiki/index.md
 ```
 
-### 2. QMD Retrieval Setup
-The retrieval engine over the wiki is configured using `qmd.yml`. To register the collections and contexts, you can run the following CLI commands (refer to [docs/query-workflow.md](docs/query-workflow.md) for more details):
+Install QMD if needed:
+
 ```bash
-# Register reviewed wiki collection
+npm install -g @tobilu/qmd
+```
+
+Register the wiki and raw-source collections:
+
+```bash
 qmd collection add ./wiki --name architecture-wiki
-qmd context add qmd://architecture-wiki "Reviewed Architecture Wiki pages: projects, ADRs, components, patterns, quality attributes."
-
-# Register raw verification fallback collection
 qmd collection add ./raw_sources --name raw-sources
+qmd context add qmd://architecture-wiki "Reviewed Architecture Wiki pages: projects, ADRs, components, patterns, quality attributes."
 qmd context add qmd://raw-sources "Raw AOSA and optional source notes used only for verification fallback."
-
-# Compile search index embeddings
 qmd embed
 ```
 
-### 3. Simulating QMD Search in Shell
-If `qmd` is not installed on your system, you can simulate search and keyword retrieval over the collections using high-efficiency grep commands:
-```bash
-# Keyword query over reviewed wiki collection
-grep -rnw "./wiki" -e "event loop"
+Use QMD for retrieval:
 
-# Keyword query over raw sources fallback collection
-grep -rnw "./raw_sources" -e "cache-aside"
+```bash
+qmd search "cache-aside" -c architecture-wiki
+qmd search "event loop" -c architecture-wiki
+qmd query $'lex: api gateway rate limiting\nvec: api gateway policy routing' -c architecture-wiki --no-rerank
 ```
 
----
+## Validation Workflow
 
-## 📈 System Evaluation & Validation
+Run the structural validation:
 
-### 1. Ingest & Answer Pipeline
-To run a complete evaluation pass:
-1. **Read `wiki/index.md` first**: Check if the concept is covered in the reviewed layers.
-2. **Execute Retrieval**: Search using the index. If missing, use simulated `qmd` grep searches over the folders.
-3. **Draft Answer**: Synthesize the answer strictly obeying the structure in [docs/answering-rules.md](docs/answering-rules.md):
-   ```text
-   Question:
-   [User query]
+```bash
+node scripts/validate-wiki.mjs
+```
 
-   Pages consulted:
-   - [List of paths checked]
+The validator checks:
 
-   Answer:
-   [Synthesis]
+- relative Markdown links
+- frontmatter on reviewed wiki pages
+- `wiki/index.md` coverage for reviewed pages
+- source URLs in raw source notes
+- portability issues such as absolute local file URI links
 
-   Sources used:
-   - [List of direct support paths]
-   ```
+Run the full provided question-bank retrieval check:
 
-### 2. Manual Validation Checklist
-To validate generated answers:
-1. **Zero Hallucination check**: Ensure the output does not bring in outside assumptions (e.g. Git packfile details not in sources).
-2. **Path Citation verify**: Every claim must link directly to an exact supporting file path under `wiki/` or `raw_sources/`.
-3. **Honesty under Blank Space**: For unpopulated areas (e.g. Q22), verify that the agent correctly states the info is missing rather than inventing facts.
-4. **Scoring**: Grade correctness (1-5) and completeness (1-5) in the validation log.
+```bash
+node scripts/check-questions.mjs
+```
 
----
+That check validates Q01-Q24 against the real QMD `architecture-wiki`
+collection and uses `raw-sources` only for explicit fallback coverage checks.
 
-## 🔗 Documentation Links
+## Answering Workflow
 
-- **Final Comprehensive Report**: [docs/final-report.md](docs/final-report.md)
-- **Demo Script**: [docs/demo-script.md](docs/demo-script.md)
-- **Design Rationale**: [docs/wiki-design-decisions.md](docs/wiki-design-decisions.md)
-- **Evaluation Questions**: [evaluation/evaluation-questions.md](evaluation/evaluation-questions.md)
-- **Generated Answers**: [evaluation/evaluation-results.md](evaluation/evaluation-results.md)
-- **Scoring & Auditing Report**: [evaluation/manual-validation.md](evaluation/manual-validation.md)
-- **Roadmap & Gaps Analysis**: [evaluation/wiki-fixes-from-evaluation.md](evaluation/wiki-fixes-from-evaluation.md)
+For chatbot-style answers:
+
+1. Read `wiki/index.md`.
+2. Prefer reviewed `wiki/` pages.
+3. Use `qmd search` or typed `qmd query` when the index is not enough.
+4. Fall back to `raw_sources/` only for verification or missing reviewed
+   coverage.
+5. Follow `docs/answering-rules.md` and cite exact Markdown file paths.
+
+## Evaluation Evidence
+
+- Design rationale: `docs/wiki-design-decisions.md`
+- Final report: `docs/final-report.md`
+- Demo script: `docs/demo-script.md`
+- Question bank: `questions/typical-architecture-questions.md`
+- Evaluation questions: `evaluation/evaluation-questions.md`
+- Generated answers: `evaluation/evaluation-results.md`
+- Manual validation: `evaluation/manual-validation.md`
+- Gap and fix log: `evaluation/wiki-fixes-from-evaluation.md`

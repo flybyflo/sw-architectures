@@ -20,8 +20,8 @@ The index lists reviewed project pages, ADRs, components, patterns, quality
 attributes, and source notes. It is intended to be consulted before semantic or
 full-text search, so that common questions are directed to curated pages first.
 
-If the index does not provide enough context, retrieval can use the collections
-configured in `qmd.yml`.
+If the index does not provide enough context, retrieval uses QMD. The
+`qmd.yml` file names the reviewed `wiki/` and raw-source collections.
 
 ## Representation Of Architecture Decisions With ADRs
 
@@ -62,18 +62,27 @@ claims.
 
 Each reviewed update should validate relative links, include frontmatter on
 reviewed pages, list major pages in `wiki/index.md`, and record the change in
-`wiki/log.md`.
+`wiki/log.md`. The structural validation command is
+`node scripts/validate-wiki.mjs`.
 
 ## Implementation Scope
 
-The current reviewed content covers five AOSA projects:
+The current reviewed content covers nine AOSA projects:
 
 - nginx
 - Git
+- Mercurial
 - MediaWiki
+- Moodle
 - Hadoop HDFS
 - LLVM
+- Eclipse
+- Jitsi
 
 For these projects, the wiki includes project pages, ADRs, shared components,
-patterns, and quality-attribute pages. The same schema can be applied to
-additional AOSA chapters and optional sources such as ByteByteGo.
+patterns, and quality-attribute pages. The wiki also includes reviewed generic
+pages for API Gateway, Message Broker, API Gateway Topology Tradeoffs,
+Asynchronous Messaging, Caching Strategies, Database Sharding, Distributed
+Reliability, Event Sourcing, Plugin Architecture, Load Balancing, Availability,
+and Consistency. The same schema can be applied to additional AOSA chapters and
+optional sources.

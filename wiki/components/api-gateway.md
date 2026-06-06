@@ -2,8 +2,7 @@
 title: API Gateway
 type: component
 status: reviewed
-projects:
-  - ../projects/nginx.md
+projects: []
 sources:
   - ../../raw_sources/extra_sources/bytebytego-api-gateway.md
   - ../../raw_sources/aosa/nginx.md
@@ -36,9 +35,14 @@ An API Gateway provides a unified client-facing interface in front of multiple b
 - **Rate Limiting Tokens / Counters**: State managed via algorithms like Token Bucket per user, key, tenant, or route.
 - **Cached Responses**: Temporary local storage of idempotent downstream responses.
 
-## Project Uses
+## Project Uses And Related Concepts
 
-- [nginx](../projects/nginx.md): nginx's reverse proxy capabilities and event-driven non-blocking worker processes are conceptually aligned with high-concurrency request routing and entry mediation.
+- No reviewed AOSA project is documented as using a full API Gateway pattern in
+  the current wiki.
+- [nginx](../projects/nginx.md): nginx's reverse proxy capabilities and
+  event-driven non-blocking worker processes are related to high-concurrency
+  request routing and entry mediation, but this page does not claim nginx is a
+  complete API gateway.
 - [ByteByteGo API Gateway source note](../../raw_sources/extra_sources/bytebytego-api-gateway.md): serves as a core entry pattern for microservice and service-oriented architectures.
 
 ## Related Decisions

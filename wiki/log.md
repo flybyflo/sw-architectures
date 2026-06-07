@@ -145,3 +145,16 @@ and follow-up work.
   checks, `qmd update`, `qmd embed`, `qmd query`, `qmd status`,
   `node scripts/check-questions.mjs`, `node scripts/validate-wiki.mjs`, and
   `git diff --check`.
+
+## 2026-06-07
+
+### Agent QMD Workflow Clarification
+- Change type: query-support documentation update.
+- Scope: Expanded `AGENTS.md` with concrete Architecture Wiki answer workflow
+  instructions for QMD retrieval, raw-source fallback, answer formatting, and
+  post-change retrieval refresh.
+- Documentation changed:
+  - `AGENTS.md`
+- Validation performed: `qmd update`, `qmd embed`, `qmd status`,
+  `node scripts/check-questions.mjs`, `node scripts/validate-wiki.mjs`, and
+  `git diff --check`.
